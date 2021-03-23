@@ -90,35 +90,26 @@ namespace eka.comms
         [Command("ankieta")]
         [Description("Tworzenie ankiety")]
         // [RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
-        public async Task ankieta(CommandContext ctx, string uno, string dos, string tres, params DiscordEmoji[] emojiOption)
+        public async Task ankieta(CommandContext ctx, string tytul,params DiscordEmoji[] emojiOption)
         {
            
             var interactivity = ctx.Client.GetInteractivity();
 
             var opcje = emojiOption.Select(x => x.ToString());
-            
 
-            //var ankietaEmbed = new DiscordEmbedBuilder
-            //{
-            //     Title = "Ankieta:",
-            //
-            //     Description = string.Join("", opcje),
-            //     
-            //     ImageUrl = "http://i.imgur.com/44SoSqS.jpg"
-            //
-            // };
+            var xde = "᲼᲼᲼᲼᲼᲼"; 
+
+
 
             var ankietaembed = new DiscordEmbedBuilder();
             ankietaembed.WithTitle("Ankieta: ");
             string.Join("", opcje);
-            ankietaembed.AddField( "1:\n" , uno);
-            ankietaembed.AddField( "2:\n" , dos);
-            ankietaembed.AddField( "3:\n", tres);
+            foreach (var opcja in emojiOption)
+            {
+               ankietaembed.AddField(String.Format("{0} {1} {0}",opcja.ToString(), tytul), xde);
+            }
+           
             ankietaembed.WithImageUrl("https://i.imgur.com/1yG28tM.jpg");
-
-
-
-
 
 
 
