@@ -13,23 +13,23 @@ namespace eka.comms
     public class commands : BaseCommandModule
     {
 
-        [Command("air")]
-        [Description("no wiadomo co i kogo")]
-        [RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
-        public async Task air(CommandContext ctx)
+        [Command("test")]
+        [Description("test")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        public async Task test(CommandContext ctx)
         {
-            await ctx.Channel.SendMessageAsync("J***C AIR").ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync("test").ConfigureAwait(false);
         }
 
         [Command("rola")]
 
-        [Description("rola byku")]
+        [Description("Przydzielenie roli")]
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task join(CommandContext ctx)
         {
             var joinEmbed = new DiscordEmbedBuilder
             {
-                Title = "Byku chcesz role?",
+                Title = "Chcesz role?",
                 ImageUrl = ctx.Client.CurrentUser.AvatarUrl,
                 Color = DiscordColor.Green
             };
@@ -65,7 +65,7 @@ namespace eka.comms
 
         [Command("orzel")]
         [Description("orzel ")]
-        [RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task orzel(CommandContext ctx)
         {
             await ctx.Channel.SendMessageAsync("orzel mam dla ciebie cebularz").ConfigureAwait(false);
@@ -80,14 +80,7 @@ namespace eka.comms
             await ctx.Channel.SendMessageAsync((x + y).ToString()).ConfigureAwait(false);
         }
 
-        [Command("navyseal"), Aliases("gorillawarfare"), Description("What the fuck did you just say to me?")]
-        public async Task NavySeal(CommandContext ctx)
-        {
-            await ctx.TriggerTypingAsync();
-            await ctx.RespondAsync("What the fuck did you just fucking say about me, you little bitch? I’ll have you know I graduated top of my class in the Navy Seals, and I’ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I’m the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You’re fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that’s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little “clever” comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You’re fucking dead, kiddo.");
-        }
-
-        [Command("an"), Aliases("og"), Description("do oglaszania wiadomosci")]
+        [Command("anno"), Aliases("og"), Description("do oglaszania wiadomosci")]
 
         public async Task Anno(CommandContext ctx, string MessageType )
         {
@@ -105,7 +98,7 @@ namespace eka.comms
 
         [Command("ankieta")]
         [Description("Tworzenie ankiety")]
-        [RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task ankieta(CommandContext ctx, string tytul,params DiscordEmoji[] emojiOption)
         {
            
