@@ -11,6 +11,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using test;
 
 namespace eka
 {
@@ -59,7 +60,8 @@ namespace eka
             Commands = Client.UseCommandsNext(commandsConfig);
 
             Commands.RegisterCommands<commands>();
-            
+            Commands.RegisterCommands<AKZ>();
+
 
             await Client.ConnectAsync();
 
