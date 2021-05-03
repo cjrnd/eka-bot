@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using DSharpPlus;
 
 
+
 namespace test
 {
     public class kurs
@@ -39,11 +40,9 @@ namespace test
     {
         [Command("akz")]
         [Description("Dostępne kursy w katalogu akz")]
-        [RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task akz(CommandContext ctx)
         {
-           
-            
                 var katalog = GetHtmlAsync();
                 katalog.Wait();
              
@@ -61,11 +60,7 @@ namespace test
                 akz.Description = wiadomosc;
                 await ctx.Channel.SendMessageAsync(embed : akz).ConfigureAwait(false);
                 }
-            
-                
                 Console.ReadKey();
-
-            
 
             static async Task<Dictionary<string, List<kurs>>> GetHtmlAsync()
             {
@@ -83,7 +78,6 @@ namespace test
                 Regex nowy = new Regex(@"\(\w*\ *\w*\)\ \d*:\d*-\d*:\d*");
 
                 Dictionary<string, List<kurs>> katalogkurs = new Dictionary<string, List<kurs>>();
-
 
                 for (i = 0; i < (kursy.Count + 1) / 10; i++)
                 {
@@ -111,16 +105,12 @@ namespace test
                                 katalog.Add(nowykurs);
                                 katalogkurs.Add(kursy[i * 10 + 2].InnerText, katalog);
                             }
-
                         }
                     }
-
-
                 }
 
                 return katalogkurs;
             }
-            
         }
     }
 }

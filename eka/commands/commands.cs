@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using DSharpPlus;
 
+
 namespace eka.comms
 {
     public class commands : BaseCommandModule
@@ -20,9 +21,28 @@ namespace eka.comms
         {
             await ctx.Channel.SendMessageAsync("test").ConfigureAwait(false);
         }
+        [Command("cal")]
+        public async Task cal(CommandContext ctx)
+        {
+            var calendar = new DiscordEmbedBuilder();
+            calendar.WithColor(DiscordColor.IndianRed);
+            calendar.WithTitle("Kalendarz AKZ");
+            calendar.AddField("GODZINA","tutaj tego", true);
+            calendar.AddField("PONIEDZIAŁEK","zajecia jeden", true);
+            calendar.AddField("WTOREK","zajecia dwa", true);
+            calendar.AddField("ŚRODA","zajecia trzy", true);
+            calendar.AddField("CZWARTEK","cztery ", true);
+            calendar.AddField("PIĄTEK","no i pięć", true);
+            
 
-        [Command("rola")]
 
+
+
+            var calmes = await ctx.Channel.SendMessageAsync(embed: calendar).ConfigureAwait(false);
+        }
+
+
+    [Command("rola")]
         [Description("Przydzielenie roli")]
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task join(CommandContext ctx)
@@ -72,29 +92,18 @@ namespace eka.comms
         }
 
 
-        [Command("dodaj")]
-        [Description("dodawanie mordo")]
-        // [RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
-        public async Task dodaj(CommandContext ctx, [Description("pierwsza liczba mordo")] int x, [Description("druga liczba mordo")] int y)
-        {
-            await ctx.Channel.SendMessageAsync((x + y).ToString()).ConfigureAwait(false);
-        }
-
         [Command("anno"), Aliases("og"), Description("do oglaszania wiadomosci")]
-
         public async Task Anno(CommandContext ctx, string MessageType )
         {
            
-            
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
             var AnnoEmbed = new DiscordEmbedBuilder();
             AnnoEmbed.WithTitle("Ogłoszenie:");
             AnnoEmbed.WithDescription(MessageType);
             var AnnoMessage = await ctx.Channel.SendMessageAsync(embed: AnnoEmbed).ConfigureAwait(false);
         
-       
-
         }
+
 
         [Command("ankieta")]
         [Description("Tworzenie ankiety")]
@@ -108,8 +117,6 @@ namespace eka.comms
 
             var xde = "᲼᲼᲼᲼᲼᲼"; 
 
-
-
             var ankietaembed = new DiscordEmbedBuilder();
             ankietaembed.WithTitle("Ankieta: ");
             string.Join("", opcje);
@@ -120,10 +127,7 @@ namespace eka.comms
            
             ankietaembed.WithImageUrl("https://i.imgur.com/1yG28tM.jpg");
 
-
-
             var ankietaMessage = await ctx.Channel.SendMessageAsync(embed: ankietaembed).ConfigureAwait(false);
-
 
             foreach(var opcja in emojiOption)
             {
