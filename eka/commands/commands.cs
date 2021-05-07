@@ -19,30 +19,77 @@ namespace eka.comms
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task test(CommandContext ctx)
         {
+            await ctx.TriggerTypingAsync().ConfigureAwait(false);
             await ctx.Channel.SendMessageAsync("test").ConfigureAwait(false);
         }
-        [Command("cal")]
-        public async Task cal(CommandContext ctx)
+
+
+        [Command("air")]
+        [Description("wiadomo co")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        public async Task air(CommandContext ctx)
         {
-            var calendar = new DiscordEmbedBuilder();
-            calendar.WithColor(DiscordColor.IndianRed);
-            calendar.WithTitle("Kalendarz AKZ");
-            calendar.AddField("GODZINA","tutaj tego", true);
-            calendar.AddField("PONIEDZIAŁEK","zajecia jeden", true);
-            calendar.AddField("WTOREK","zajecia dwa", true);
-            calendar.AddField("ŚRODA","zajecia trzy", true);
-            calendar.AddField("CZWARTEK","cztery ", true);
-            calendar.AddField("PIĄTEK","no i pięć", true);
-            
-
-
-
-
-            var calmes = await ctx.Channel.SendMessageAsync(embed: calendar).ConfigureAwait(false);
+            await ctx.TriggerTypingAsync().ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync("* * * * * AiR").ConfigureAwait(false);
         }
 
 
-    [Command("rola")]
+        [Command("orzel")]
+        [Description("orzel ")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        public async Task orzel(CommandContext ctx)
+        {
+            await ctx.TriggerTypingAsync().ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync("orzel mam dla ciebie cebularz").ConfigureAwait(false);
+        }
+
+
+        [Command("anno"), Aliases("og"), Description("do oglaszania wiadomosci")]
+        public async Task Anno(CommandContext ctx)
+        {
+            await ctx.TriggerTypingAsync().ConfigureAwait(false);
+           
+            await ctx.TriggerTypingAsync().ConfigureAwait(false);
+            var AnnoEmbed = new DiscordEmbedBuilder();
+            AnnoEmbed.WithTitle("Ogłoszenie:");
+            AnnoEmbed.WithDescription("");
+            var AnnoMessage = await ctx.Channel.SendMessageAsync(embed: AnnoEmbed).ConfigureAwait(false);
+        }
+
+
+        [Command("ankieta")]
+        [Description("Tworzenie ankiety")]
+        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
+        public async Task ankieta(CommandContext ctx, string tytul,params DiscordEmoji[] emojiOption)
+        {
+           
+            var interactivity = ctx.Client.GetInteractivity();
+
+            var opcje = emojiOption.Select(x => x.ToString());
+
+            var xde = "᲼᲼᲼᲼᲼᲼"; 
+
+            var ankietaembed = new DiscordEmbedBuilder();
+            ankietaembed.WithTitle("Ankieta: ");
+            string.Join("", opcje);
+            foreach (var opcja in emojiOption)
+            {
+               ankietaembed.AddField(String.Format("{0} {1} {0}",opcja.ToString(), tytul), xde);
+            }
+           
+            ankietaembed.WithImageUrl("https://i.imgur.com/1yG28tM.jpg");
+
+            var ankietaMessage = await ctx.Channel.SendMessageAsync(embed: ankietaembed).ConfigureAwait(false);
+
+            foreach(var opcja in emojiOption)
+            {
+                await ankietaMessage.CreateReactionAsync(opcja).ConfigureAwait(false);
+            }
+
+        }
+
+
+        /* [Command("rola")]
         [Description("Przydzielenie roli")]
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task join(CommandContext ctx)
@@ -82,62 +129,6 @@ namespace eka.comms
             await joinMessage.DeleteAsync().ConfigureAwait(false);
         }
 
-
-        [Command("orzel")]
-        [Description("orzel ")]
-        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
-        public async Task orzel(CommandContext ctx)
-        {
-            await ctx.Channel.SendMessageAsync("orzel mam dla ciebie cebularz").ConfigureAwait(false);
-        }
-
-
-        [Command("anno"), Aliases("og"), Description("do oglaszania wiadomosci")]
-        public async Task Anno(CommandContext ctx, string MessageType )
-        {
-           
-            await ctx.TriggerTypingAsync().ConfigureAwait(false);
-            var AnnoEmbed = new DiscordEmbedBuilder();
-            AnnoEmbed.WithTitle("Ogłoszenie:");
-            AnnoEmbed.WithDescription(MessageType);
-            var AnnoMessage = await ctx.Channel.SendMessageAsync(embed: AnnoEmbed).ConfigureAwait(false);
-        
-        }
-
-
-        [Command("ankieta")]
-        [Description("Tworzenie ankiety")]
-        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
-        public async Task ankieta(CommandContext ctx, string tytul,params DiscordEmoji[] emojiOption)
-        {
-           
-            var interactivity = ctx.Client.GetInteractivity();
-
-            var opcje = emojiOption.Select(x => x.ToString());
-
-            var xde = "᲼᲼᲼᲼᲼᲼"; 
-
-            var ankietaembed = new DiscordEmbedBuilder();
-            ankietaembed.WithTitle("Ankieta: ");
-            string.Join("", opcje);
-            foreach (var opcja in emojiOption)
-            {
-               ankietaembed.AddField(String.Format("{0} {1} {0}",opcja.ToString(), tytul), xde);
-            }
-           
-            ankietaembed.WithImageUrl("https://i.imgur.com/1yG28tM.jpg");
-
-            var ankietaMessage = await ctx.Channel.SendMessageAsync(embed: ankietaembed).ConfigureAwait(false);
-
-            foreach(var opcja in emojiOption)
-            {
-                await ankietaMessage.CreateReactionAsync(opcja).ConfigureAwait(false);
-            }
-
-        }
-         
-
-
-
+        */
     }
 }

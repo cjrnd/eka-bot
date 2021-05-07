@@ -13,7 +13,7 @@ using DSharpPlus;
 
 
 
-namespace test
+namespace akz_commands
 {
     public class kurs
     {
@@ -43,24 +43,26 @@ namespace test
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task akz(CommandContext ctx)
         {
-                var katalog = GetHtmlAsync();
+            await ctx.TriggerTypingAsync().ConfigureAwait(false);
+            var katalog = GetHtmlAsync();
                 katalog.Wait();
-             
-                foreach (KeyValuePair<string, List<kurs>> grupak in katalog.Result.OrderBy(i => i.Key))
+                var akz = new DiscordEmbedBuilder();
+                akz.Title = "Dostepne kursy w AKZ";
+                akz.WithColor(DiscordColor.IndianRed);
+            foreach (KeyValuePair<string, List<kurs>> grupak in katalog.Result.OrderBy(i => i.Key))
                 {
-                 var akz = new DiscordEmbedBuilder();
-                akz.Title = grupak.Key;
-                string wiadomosc="";
-
-
+                    string wiadomosc = "";
                 foreach (var kurs in grupak.Value)
-                    {
-                       wiadomosc +="\n"+ kurs.wypisz();
-                    }
-                akz.Description = wiadomosc;
-                await ctx.Channel.SendMessageAsync(embed : akz).ConfigureAwait(false);
+                {
+                    wiadomosc += "\n" + kurs.wypisz();
                 }
-                Console.ReadKey();
+                    akz.AddField(grupak.Key, wiadomosc);
+        
+                }
+
+            await ctx.Channel.SendMessageAsync(embed: akz).ConfigureAwait(false);
+           
+            Console.ReadKey();
 
             static async Task<Dictionary<string, List<kurs>>> GetHtmlAsync()
             {
