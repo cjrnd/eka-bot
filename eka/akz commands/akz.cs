@@ -9,6 +9,7 @@ using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
 using DSharpPlus.Interactivity.Extensions;
 using System.Text.RegularExpressions;
+using System.Threading;
 using DSharpPlus;
 
 
@@ -52,13 +53,16 @@ namespace akz_commands
             foreach (KeyValuePair<string, List<kurs>> grupak in katalog.Result.OrderBy(i => i.Key))
                 {
                     string wiadomosc = "";
-                foreach (var kurs in grupak.Value)
-                {
-                    wiadomosc += "\n" + kurs.wypisz();
+                    
+                        foreach (var kurs in grupak.Value)
+                        {
+                            wiadomosc += "\n" + kurs.wypisz();
+                        }
+
+                        akz.AddField(grupak.Key, wiadomosc);
+                    
                 }
-                    akz.AddField(grupak.Key, wiadomosc);
-        
-                }
+           
 
             await ctx.Channel.SendMessageAsync(embed: akz).ConfigureAwait(false);
            

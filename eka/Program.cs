@@ -76,7 +76,7 @@ namespace EKA.bot
 
             Commands.RegisterCommands<commands>();
             Commands.RegisterCommands<AKZ>();
-            Commands.RegisterCommands<AKZcal>();
+            Commands.RegisterCommands<AKZParametr>();
 
             await Client.ConnectAsync();
 

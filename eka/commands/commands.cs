@@ -15,7 +15,6 @@ namespace eka.comms
     {
 
         [Command("test")]
-        [Description("test")]
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task test(CommandContext ctx)
         {
@@ -35,7 +34,6 @@ namespace eka.comms
 
 
         [Command("orzel")]
-        [Description("orzel ")]
         //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task orzel(CommandContext ctx)
         {
@@ -45,14 +43,14 @@ namespace eka.comms
 
 
         [Command("anno"), Aliases("og"), Description("do oglaszania wiadomosci")]
-        public async Task Anno(CommandContext ctx)
+        public async Task Anno(CommandContext ctx, string oglo)
         {
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
            
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
             var AnnoEmbed = new DiscordEmbedBuilder();
             AnnoEmbed.WithTitle("Ogłoszenie:");
-            AnnoEmbed.WithDescription("");
+            AnnoEmbed.WithDescription(oglo);
             var AnnoMessage = await ctx.Channel.SendMessageAsync(embed: AnnoEmbed).ConfigureAwait(false);
         }
 

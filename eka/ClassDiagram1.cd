@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="akz_callendar_commands.kurs">
+    <Position X="12.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAEAJAAAAAAAAAAAAQ=</HashCode>
+      <FileName>akz commands\AKZcal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="akz_callendar_commands.AKZParametr">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>akz commands\AKZcal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="akz_commands.kurs">
+    <Position X="10.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAEAJAAAAAAAAAAAAQ=</HashCode>
+      <FileName>akz commands\akz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="akz_commands.AKZ">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>akz commands\akz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eka.comms.commands">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAEAAAAAAAAAAAIAABAQAAAAAA=</HashCode>
+      <FileName>commands\commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EKA.bot.Program">
+    <Position X="14.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAEBAAAAACAAAAAAAAAAAAEAAAAAgABAAAAAQ=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="eka.configjson">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>configjson.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
