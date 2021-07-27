@@ -9,16 +9,19 @@ using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
 using DSharpPlus.Interactivity.Extensions;
 using System.Text.RegularExpressions;
+using System.Threading;
 using DSharpPlus;
 
-namespace parameter_akz
+
+
+namespace main_akz
 {
     public class Course
     {
-        public string CourseCode { get; set; }
-        public string CoursePlaces { get; set; }
-        public string CourseLeader { get; set; }
-        public string CourseDate { get; set; }
+        string CourseCode { get; set; }
+        string CoursePlaces { get; set; }
+        string CourseLeader { get; set; }
+        string CourseDate { get; set; }
 
         public Course(string CourseCode, string CoursePlaces, string CourseLeader, string CourseDate)
         {
@@ -30,42 +33,38 @@ namespace parameter_akz
 
         public string print()
         {
-            return String.Format("\t {0} {1} {2} Miejsca={3}", CourseCode, CourseLeader, CourseDate, CoursePlaces);
+           return String.Format("\t {0} {1} {2} Miejsca={3}", CourseCode, CourseLeader, CourseDate, CoursePlaces);
         }
 
     }
-
-
-    class AKZParametr : BaseCommandModule
+    public class AKZMain : BaseCommandModule
     {
-        [Command("akzp")]
-        [Description("Dostępne kursy w katalogu akz w zależności od wybranego kryterium wyszukiwania")]
-        public async Task cal(CommandContext ctx, string Parameter)
+        [Command("akz")]
+        [Description("Dostępne kursy w katalogu akz")]
+        public async Task akz(CommandContext ctx)
         {
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
             var CourseScrape = GetHtmlAsync();
-            CourseScrape.Wait();
-            var akz = new DiscordEmbedBuilder();
-            akz.Title = "Dostepne kursy w AKZ";
-            akz.WithColor(DiscordColor.Blue);
+                CourseScrape.Wait();
+                var akz = new DiscordEmbedBuilder();
+                akz.Title = "Dostepne kursy w AKZ";
+                akz.WithColor(DiscordColor.IndianRed);
             foreach (KeyValuePair<string, List<Course>> Course in CourseScrape.Result.OrderBy(i => i.Key))
-            {
-                string z = "";
-                if (Course.Key.ToLower().Contains(Parameter.ToLower()))
                 {
-                    foreach (var kurs in Course.Value)
-                    {
-                        z += "\n" + kurs.print();
-                    }
+                    string z = "";
+                    
+                        foreach (var kurs in Course.Value)
+                        {
+                            z += "\n" + kurs.print();
+                        }
 
-                    akz.AddField(Course.Key, z);
+                        akz.AddField(Course.Key, z);
+                    
                 }
-            }
-
+           
 
             await ctx.Channel.SendMessageAsync(embed: akz).ConfigureAwait(false);
-
-            Console.ReadKey();
+           
 
             static async Task<Dictionary<string, List<Course>>> GetHtmlAsync()
             {
@@ -92,9 +91,9 @@ namespace parameter_akz
                         {
                             MatchCollection mc = nowy.Matches(courses[i * 10 + 3].InnerText);
                             string x = " ";
-                            foreach (var elements in mc)
+                            foreach(var elements in mc)
                             {
-                                x += elements.ToString() + ", ";
+                               x += elements.ToString() + ", ";
                             }
                             var NewCourse = new Course(courses[i * 10 + 1].InnerText, courses[i * 10 + 5].InnerText,
                                 courses[i * 10 + 4].InnerText, x);
@@ -117,7 +116,5 @@ namespace parameter_akz
                 return CatalogOfCourses;
             }
         }
-
     }
-
 }
