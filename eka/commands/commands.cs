@@ -15,7 +15,6 @@ namespace eka.comms
     {
 
         [Command("test")]
-        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task test(CommandContext ctx)
         {
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
@@ -25,7 +24,6 @@ namespace eka.comms
 
         [Command("air")]
         [Description("wiadomo co")]
-        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task air(CommandContext ctx)
         {
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
@@ -34,7 +32,6 @@ namespace eka.comms
 
 
         [Command("orzel")]
-        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task orzel(CommandContext ctx)
         {
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
@@ -57,7 +54,6 @@ namespace eka.comms
 
         [Command("ankieta")]
         [Description("Tworzenie ankiety")]
-        //[RequireRoles(RoleCheckMode.Any, "Edytor", "Admin", "Starostwo")]
         public async Task ankieta(CommandContext ctx, string tytul,params DiscordEmoji[] emojiOption)
         {
            

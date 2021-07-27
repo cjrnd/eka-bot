@@ -11,11 +11,11 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using akz_commands;
+using main_akz;
 using eka;
 using DSharpPlus.Entities;
 using DSharpPlus.CommandsNext.Exceptions;
-using akz_callendar_commands;
+using parameter_akz;
 
 
 namespace EKA.bot
@@ -75,7 +75,7 @@ namespace EKA.bot
             Commands = Client.UseCommandsNext(commandsConfig);
 
             Commands.RegisterCommands<commands>();
-            Commands.RegisterCommands<AKZ>();
+            Commands.RegisterCommands<AKZMain>();
             Commands.RegisterCommands<AKZParametr>();
 
             await Client.ConnectAsync();
