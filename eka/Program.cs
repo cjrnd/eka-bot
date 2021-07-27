@@ -4,21 +4,21 @@ using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
-using eka.comms;
+using EKA_Commands;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using main_akz;
-using eka;
+using AKZ_Main;
+using Config_Info;
 using DSharpPlus.Entities;
 using DSharpPlus.CommandsNext.Exceptions;
-using parameter_akz;
+using AKZ_Parameter;
 
 
-namespace EKA.bot
+namespace EKA_Main_Bot
 {
 
     class Program

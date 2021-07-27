@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace eka
+namespace Config_Info
 {
     public struct configjson
     {

@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using DSharpPlus;
 
 
-namespace eka.comms
+namespace EKA_Commands
 {
     public class commands : BaseCommandModule
     {
