@@ -12,6 +12,6 @@ var url = "http://akz.pwr.edu.pl/katalog_zap.html";
                 var courses = htmlDocument.DocumentNode.Descendants("td").ToList();
 ```
 <br/>
-Code fragment responsible for getting informations from web page.
+Code fragment responsible for getting informations from web page. <br/>
 ![how its working](dc.gif)
 
