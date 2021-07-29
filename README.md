@@ -11,6 +11,8 @@ var url = "http://akz.pwr.edu.pl/katalog_zap.html";
                 htmlDocument.LoadHtml(html);
 
                 var courses = htmlDocument.DocumentNode.Descendants("td").ToList();
+                
+                Regex nowy = new Regex(@"\(\w*\ *\w*\)\ \d*:\d*-\d*:\d*");
 ```
 
 ![how its working](dc.gif)
